@@ -1,0 +1,72 @@
+{% extends "main/base.html" %}
+{% load staticfiles %}
+
+{% block meta_title %}{{ title }}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+
+
+    {% block display %}
+        <div id="shuffle-controls" class="col-xs-12">
+
+            <div class="filter-options btn-group col-xs-6">
+            {% for cat in categories %}
+              <button class="btn btn--warning filter-button" data-group="{{ cat.category_name }}">{{ cat.category_name }}</button>
+            {% endfor %}
+            </div>
+        
+            <div class="col-xs-6">
+                <span id="sort">Դասավորել ըստ</span>
+                  <select class="sort-options input-large input-contrast">
+                    <option value>Default</option>
+                    <option value="title">Title</option>
+                    <option value="date-created">Date Created</option>
+                  </select>
+                </div>
+        </div>
+    <div class="container-fluid">
+        <div id="grid" class="row-fluid m-row shuffle--container shuffle--fluid">
+            {% for item in items %}
+                <!-- SINGLE SERVICE -->
+                <figure class="col-sm-4 col-md-3 col-xs-6 picture-item" data-groups='[{% for cat in item.categories.all %}"{{ cat.category_name }}"{% if not forloop.last %}, {% endif %}{% endfor %}]' data-date-created="2011-08-14" data-title="{{ item.title }}">
+                    <div class="picture-item__inner">
+                        <img data-id="{{ item.id }}" data-toggle="modal" data-target="#myModal" src="{{ MEDIA_URL }}{{ item.featured_image }}" alt="" class="img-responsive center-block">
+                        <div class="picture-item__details clearfix">
+                       
+                      
+                          <figcaption class="picture-item__title pull-left">
+                            <a href="{{ MEDIA_URL }}{{ item.featured_image }}" target="_blank">{{ item.title }}</a>
+                          </figcaption>
+                          <p class="picture-item__tags pull-right">{{ item.percentage }}</p>
+                        </div>
+                    
+                    </div>
+                </figure>
+            {% endfor %}
+        <div class="col-sm-3 col-xs-3 shuffle__sizer"></div>
+        </div>
+    </div>
+    {% endblock %}
+        
+    
+
+{% block itemform %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+            {# Include the visible fields #}
+        <table class="table">
+        {% for field in form.visible_fields %}
+            <tr cla>
+                {{ field.errors }}
+                <td>{{ field.label_tag }}<td>
+                <td>{{ field }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+        <div class="text-center">
+            <button class="btn btn-primary">Ուղարկել</button>
+        </div>
+    </form>
+{% endblock %}
