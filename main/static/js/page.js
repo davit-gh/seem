@@ -124,7 +124,7 @@ Modules.Nav = (function( $ ) {
   }
 
   NavTray.prototype.init = function() {
-    this.setEvenHeights();
+    
     this.listen();
 
     // Google web font loading affects this.
@@ -142,15 +142,7 @@ Modules.Nav = (function( $ ) {
     this.$window.on( 'resize', $.proxy( this.onResize, this ) );
   };
 
-  NavTray.prototype.onResize = function() {
-    this.$tray.css( 'height', '' );
-    this.setEvenHeights();
-    this.saveHeight();
-
-    if ( this.isOpen ) {
-      this.$tray.css( 'height', this.collapseHeight );
-    }
-  };
+  
 
   NavTray.prototype.toggle = function() {
     this.toggleBtnText();
@@ -162,17 +154,7 @@ Modules.Nav = (function( $ ) {
     }
   };
 
-  NavTray.prototype.open = function() {
-    this.$el.removeClass('collapsed');
-    this.$tray.css( 'height', this.collapseHeight );
-    this.isOpen = true;
-  };
-
-  NavTray.prototype.close = function() {
-    this.$el.addClass('collapsed');
-    this.$tray.css( 'height', '' );
-    this.isOpen = false;
-  };
+  
 
 
   NavTray.prototype.toggleBtnText = function() {
@@ -180,13 +162,7 @@ Modules.Nav = (function( $ ) {
     this.$trigger.text( label );
   };
 
-  NavTray.prototype.setEvenHeights = function() {
-    var groups = [
-      this.$el.find('.js-demo'),
-      $('#main .js-demo')
-    ];
-    $.evenHeights( groups );
-  };
+  
 
   return {
     init: function() {
@@ -242,7 +218,7 @@ Modules.Favicon = (function( doc ) {
     self.ctx = self.canvas.getContext('2d');
 
     // Set canvas dimensions based on device DPI
-    self.canvas.height = self.canvas.width = self.size;
+    
 
     // Create a new sprite 32x32 size with 32x32 sprites
     self.sprite = new Sprite( self.ctx, self.img, self.size );
@@ -324,9 +300,9 @@ Modules.Favicon = (function( doc ) {
     self.ctx = context;
     self.img = img;
     self.width = size;
-    self.height = size;
+    
     self.frameWidth = size;
-    self.frameHeight = size;
+    
   };
 
   // Assuming horizontal sprite
@@ -337,31 +313,9 @@ Modules.Favicon = (function( doc ) {
     };
   };
 
-  Sprite.prototype.clearCanvas = function() {
-    this.ctx.clearRect( 0, 0, this.width, this.height );
-  };
+  
 
-  Sprite.prototype.drawFrame = function( frameNumber ) {
-    var self = this;
-
-    var frame = self.getFrame( frameNumber );
-
-    // Clear out the last frame
-    self.clearCanvas();
-
-    // Draw to the context. This method is really confusing...
-    self.ctx.drawImage(
-      self.img,
-      frame.x,
-      frame.y,
-      self.width,
-      self.height,
-      0,
-      0,
-      self.width,
-      self.height
-    );
-  };
+  
 
   return Favicon;
 }( document ));

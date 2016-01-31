@@ -20,5 +20,6 @@ from main import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^getdesc',  views.return_desc, name='get_desc'),
+    url("^/#tabs1$", views.home, name="home"),
     url("^$", views.home, name="home"),
 ]

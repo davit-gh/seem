@@ -52,7 +52,20 @@
             </div>
         </div>
     <!-- END LOGO -->    
-
+    <div class="container">
+            
+            {% if messages %}
+            <div class="messages">
+            {% for message in messages %}
+            <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                {{ message }}
+            </div>
+            {% endfor %}
+            </div>
+            {% endif %}
+            
+        </div>
     <!-- HOME -->
     <div id="home-area" class="container">
 {% block message %}{% endblock %}
@@ -64,13 +77,25 @@
     <div id="tabs-container" class="container">
         <div id="tabs" >
                     <ul class='resp-tabs-list'>
-                    <li>Մեր Մասին</li>
-                    <li>Նայել Ապրանքներ</li>
-                   
+                        
+                        <li>Նայել Ապրանքներ</li>
+
                         <li>Ավելացնել Ապրանքներ</li>
-                   
+                        <li>Մեր Մասին</li>
                     </ul>
                     <div class="resp-tabs-container">
+                        
+                        <div>
+                            <div id="tab_container">
+                                {% block display %}{% endblock %}
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div id="calendar_div">                               
+                                {% block itemform %}{% endblock %}
+                            </div>
+                        </div>
                         <div id="tab2">
                             <div id="tab_container" class="col-lg-12">
                                 <div class="col-md-12">
@@ -81,18 +106,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <div id="tab_container">
-                                {% block display %}{% endblock %}
-                            </div>
-                        </div>
-                       
-                            <div>
-                                <div id="calendar_div">                               
-                                    {% block itemform %}{% endblock %}
-                                </div>
-                            </div>
-                       
                     </div>
         </div>
     </div>
@@ -165,8 +178,11 @@
             $('#tabs').easyResponsiveTabs({
                 type: 'default', //Types: default, vertical, accordion           
                 width: '100%', //auto or any custom width
-                fit: false,   // 100% fits in a container
+                fit: true,   // 100% fits in a container
+
             });
+            $grid = $('#grid');
+            $grid.shuffle('update');
         });
     </script>
 

@@ -25,7 +25,7 @@ SECRET_KEY = '-l0eay^@!u+h8-!c@-na$3mw&zl8c1#h)9f2d*6@iw^fetzzw!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost',]
+ALLOWED_HOSTS = ['dooit.xyz',]
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'main',
     'dooit2',
 ]
@@ -159,3 +160,5 @@ ROOT_URLCONF = "%s.urls" % PROJECT_DIRNAME
 LOCALE_PATHS = (
     os.path.join(PROJECT_ROOT, 'locale'),
 )
+
+SITE_ID = 1

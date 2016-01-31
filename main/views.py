@@ -1,16 +1,19 @@
+# coding: utf-8
 from django.shortcuts import render, get_object_or_404
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 from main.models import Item, ItemCategory
 from main.forms import ItemForm
-import pdb
+from django.contrib import messages
+
+
 def home(request):
 	if request.method == 'POST':
 		form = ItemForm(request.POST, request.FILES)
 		if form.is_valid():
 			form.save()
-			return HttpResponse('thanks')
-	else:
-		form = ItemForm()
+			messages.info(request, "Դուք ավելացրեցիք ապրանք, շնորհակալություն։")
+
+	form = ItemForm()
 
 	items = Item.objects.all()
 	categories = ItemCategory.objects.all()
