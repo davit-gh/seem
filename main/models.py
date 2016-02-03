@@ -1,3 +1,4 @@
+# coding: utf-8
 from __future__ import unicode_literals
 
 from django.db import models
@@ -8,13 +9,13 @@ PERCENTAGE_CHOICES = (
 )
 
 class Item(models.Model):
-    title = models.CharField(max_length=120, blank=False)
-    description = models.CharField(max_length=800, blank=False)
-    featured_image = models.ImageField(upload_to="uploads/items", null=True, blank=True) 
+    title = models.CharField("Վերնագիր", max_length=120, blank=False)
+    description = models.TextField("Նկարագրություն", blank=False)
+    featured_image = models.ImageField("Նկար", upload_to="uploads/items", null=True, blank=True) 
     categories = models.ManyToManyField("ItemCategory", 
-            verbose_name="Categories",\
+            verbose_name="Կատեգորիաներ",\
             blank=True, related_name="items")
-    percentage = models.CharField(max_length=20, blank=False, choices=PERCENTAGE_CHOICES, default='100%')
+    percentage = models.CharField("Տոկոսաչափ", max_length=20, blank=False, choices=PERCENTAGE_CHOICES, default='100%')
     class Meta:
         verbose_name = "Item"
         verbose_name_plural = "Items"

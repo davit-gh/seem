@@ -442,3 +442,7 @@ div#shuffle-controls{
 #contact{
     color: rgba(125, 115, 115, 0.52);
 }
+
+.navbar-default {
+    height: 10%;
+}

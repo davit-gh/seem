@@ -34,7 +34,7 @@ server {
     }
 
     location /static/ {
-        root            %(proj_path)s;
+        root            %(proj_path)s/%(proj_app)s;
         access_log      off;
         log_not_found   off;
         expires 30d;
