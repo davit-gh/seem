@@ -1,6 +1,6 @@
 # coding: utf-8
 from __future__ import unicode_literals
-
+from django.contrib.auth.models import User
 from django.db import models
 
 PERCENTAGE_CHOICES = (
@@ -10,10 +10,11 @@ PERCENTAGE_CHOICES = (
 
 class Item(models.Model):
     title = models.CharField("Վերնագիր", max_length=120, blank=False)
+    user = models.ForeignKey(User, related_name="items")
     description = models.TextField("Նկարագրություն", blank=False)
     featured_image = models.ImageField("Նկար", upload_to="uploads/items", null=True, blank=True) 
     categories = models.ManyToManyField("ItemCategory", 
-            verbose_name="Կատեգորիաներ",\
+            verbose_name="Բաժիններ",\
             blank=True, related_name="items")
     percentage = models.CharField("Տոկոսաչափ", max_length=20, blank=False, choices=PERCENTAGE_CHOICES, default='100%')
     class Meta:

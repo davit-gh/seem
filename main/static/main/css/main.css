@@ -20,7 +20,6 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
 }
 h1 {
-    font-size: 2em;
     font-weight: 300;
 }
 h2 {
@@ -54,14 +53,13 @@ a:hover {
     transition: background-color .3s ease;
 }
 .section {
-    padding: 75px 0;
+    padding: 35px 0;
     
     
 }
 .section-title {
     margin-bottom: 50px;
     padding-bottom: 20px;
-    display: inline-block;
     border-bottom: 1px solid #24C0D9;
 }
 .button {
@@ -110,7 +108,18 @@ a:hover {
 ================================================ */
 
 #home-area {
-    margin-top: 25px;
+    margin-top: 70px;
+    background-image: url(../img/curly.jpg);
+    background-size: cover;
+    background-position: right;
+    height: 400px;
+}
+#motto{
+    margin: 100px 0 20px;
+    color: #fff;
+}
+#profile_content{
+    margin-top: 60px;
 }
 #home-area .container {
     padding-top: 200px;
@@ -445,4 +454,73 @@ div#shuffle-controls{
 
 .navbar-default {
     height: 10%;
+}
+
+.messages{
+    margin-top: 25px;
+    z-index: 9999;
+    position: relative;
+}
+
+.login:hover{
+    background-color: #fff;
+    border-color: #B5F5E8;
+}
+.login:focus{
+    background-color: #fff;
+    border-color: #B5F5E8;
+}
+
+span#error{
+    color: red;
+}
+
+div.box{
+    margin-top: 100px;
+}
+
+.overlay{
+  top: 40px;
+  left: 0;
+  width: 70%;
+  height: 100%;
+  z-index: 10;
+  margin-left: 200px;
+}
+
+span#edit i {
+    bottom: 210px;
+    left: 180px;
+    position: relative;
+    color: darkblue;
+    cursor: pointer;
+}
+
+span#delete i {
+    bottom: 212px;
+    left: 230px;
+    position: relative;
+    color: red;
+    cursor: pointer;
+}
+
+#add-item-header{
+    margin: 150px 0 0 50px;
+}
+
+#added-items{
+    margin-left: 50px;
+}
+
+div.desc{
+    background-color: rgba(181, 245, 232, 0.45);
+    padding: 15px;
+}
+
+ul{
+    list-style-type: none;
+}
+
+#added, #about{
+    margin: 10px;
 }

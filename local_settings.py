@@ -16,7 +16,7 @@ DATABASES = {
 FABRIC = {
      "SSH_USER": "flaunt", # SSH username
      "SSH_PASS":  "", # SSH password (consider key-based authentication)
-     "SSH_KEY_PATH":  "/home/hero/.ssh/id_rsa.pub", # Local path to SSH key file, for key-based auth
+     "SSH_KEY_PATH":  "/home/bamby/.ssh/id_rsa.pub", # Local path to SSH key file, for key-based auth
      "HOSTS": ["188.166.7.218"],
      "DOMAINS": ALLOWED_HOSTS, # List of hosts to deploy to
      "VIRTUALENV_HOME":  "/home/flaunt/virtenv", # Absolute remote path for virtualenvs

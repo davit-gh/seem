@@ -21,4 +21,11 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^getdesc',  views.return_desc, name='get_desc'),
     url("^$", views.home, name="home"),
+    #url(r'^login', views.login_view, name="login"),
+    url("^login$", views.signup, name="signup"),
+    url("^logout$", views.logout, name="logout"),
+    url("^signup$", views.signup, name="signup"),
+    url("^profile$", views.profile, name="profile"),
+    url("^profile/(?P<pk>\d+)/$", views.profile, name="profile_pk"),
+    url(r'^del_prod$', views.del_prod, name='del'),
 ]

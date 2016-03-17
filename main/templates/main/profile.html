@@ -1,0 +1,58 @@
+{% extends "main/base.html" %}
+{% load staticfiles %}
+
+
+
+{% block content %}
+<div class="text-center">
+    <h1 style="margin-top: 150px">Ավելացնել նոր իր</h1>
+</div>
+<div id="profile_content" class="container">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+            {# Include the visible fields #}
+        <table class="table">
+        {% for field in form.visible_fields %}
+            <tr cla>
+                {{ field.errors }}
+                <td>{{ field.label_tag }}<td>
+                <td>{{ field }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+        <div class="text-center">
+            <button class="btn btn-primary">Ուղարկել</button>
+        </div>
+    </form>
+</div>
+        
+        <h3 id="added-items">Իմ ավելացրած իրերը</h3>
+        <div id="gri" class="col-md-12">
+            {% for item in items %}
+                <!-- SINGLE SERVICE -->
+                <div class="col-md-4">
+                    <figure>
+                        <figcaption>{{ item.title }}</figcaption>
+                        <img id="{{ item.id }}" src="{{ MEDIA_URL }}{{ item.featured_image }}" alt="{{ item.title }}" width="250px" class="thumbnail">
+                        <span id="delete"><i class="fa fa-times fa-3x"></i></span>
+                        <div class="desc" style="width: 250px; margin-top: -50px; margin-bottom: 100px">
+                            {{ item.description }}
+                        </div>
+                    </figure>
+                </div>
+            {% empty %}
+                <p>
+                    Դուք դեռ չունեք ավելացված իրեր։
+                </p>
+            {% endfor %}
+            
+        </div>
+
+{% endblock %}
+        
+    
+
+

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'main',
     'dooit2',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE_CLASSES = [
